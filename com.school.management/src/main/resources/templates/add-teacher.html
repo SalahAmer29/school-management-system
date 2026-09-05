@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" th:href="@{/style.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Teachers</title>
+</head>
+<body>
+<h1>School Management System-Teachers</h1>
+<nav class="navbar1">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/showTeacher}">Teachers</a></li>
+        <li><a th:href="@{/addTeacher}">Add a Teacher</a></li>
+    </ul>
+</nav>
+<main>
+<form th:action="@{/saveTeacher}" th:object="${teacher}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+<div>
+    <label class="label">Full Name:</label>
+    <input class="textbox" type="text" th:field="*{fullName}" required/>
+
+</div>
+<div>
+    <label class="label">specialization:</label>
+    <input class="textbox" type="text" th:field="*{specialization}" required/>
+</div>
+<div>
+    <label class="label" >Courses:</label>
+    <select th:field="*{course}">
+        <option value="">-- Select Course --</option>
+        <option th:each="c : ${courses}" th:value="${c.id}" th:text="${c.name}"></option>
+    </select>
+</div>
+    <button class="button" type="submit">Save Teacher</button>
+</form>
+</main>
+</body>
+</html>

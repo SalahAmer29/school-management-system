@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" th:href="@{/style.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Course list</title>
+</head>
+<body>
+<h1>School Management System-Courses</h1>
+<nav class="navbar1">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/showCourses}">Courses</a></li>
+        <li><a th:href="@{/addCourse}">Add a Course</a></li>
+    </ul>
+</nav>
+<main>
+<table th:border="1px">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Course Code</th>
+            <th>Other</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr th:each="course : ${courses}">
+            <td th:text="${course.name}">Course Name</td>
+            <td th:text="${course.courseCode}">Course Code</td>
+            <td>
+                <a th:href="@{/course-detalis/{id}(id=${course.id})}">Course Deatails</a>
+                <a th:href="@{/editCourse/{id}(id=${course.id})}">Update</a>
+                <form th:action="@{/deleteCourse/{id}(id=${course.id})}" method="post">
+                    <input type="submit" value="delete">
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</main>
+</body>
+</html>

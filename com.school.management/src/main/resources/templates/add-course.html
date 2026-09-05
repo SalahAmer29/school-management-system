@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" th:href="@{/style.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Courses</title>
+</head>
+<body>
+<h1>School Management System-Courses</h1>
+<nav class="navbar1">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/showCourses}">Courses</a></li>
+        <li><a th:href="@{/addCourse}">Add a Course</a></li>
+    </ul>
+</nav>
+<main>
+<form th:action="@{/saveCourse}" th:object="${course}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label class="label">Course Name:</label>
+        <input class="textbox" type="text" th:field="*{name}"/>
+    </div>
+    <div>
+        <label class="label">Course Code:</label>
+        <input class="textbox" type="text" th:field="*{courseCode}"/>
+    </div>
+    <div>
+        <h2>Assaign Teaher</h2>
+        <select th:field="*{teacher}">
+            <option value="">-- Select Teacher --</option>
+            <option th:each="t : ${teachers}" th:value="${t.id}" th:text="${t.fullName}"></option>
+        </select>
+    </div>
+    <div>
+        <h2>Assign Classroom</h2>
+        <select th:field="*{classroom}">
+            <option value="">-- Select Classroom --</option>
+            <option th:each="c : ${classrooms}" th:value="${c.id}" th:text="${c.name}"></option>
+        </select>
+    </div>
+    <button class="button" type="submit">Save Course</button>
+</form>
+</main>
+</body>
+</html>

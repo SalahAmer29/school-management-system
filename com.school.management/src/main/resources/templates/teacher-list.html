@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" th:href="@{/style.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Teachers List</title>
+</head>
+<body>
+<h1>School Management System-Teachers</h1>
+<nav class="navbar1">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/showTeacher}">Teachers</a></li>
+        <li><a th:href="@{/addTeacher}">Add a Teacher</a></li>
+    </ul>
+</nav>
+<main>
+<table th:border="1px">
+    <thead>
+        <tr>
+            <th>FullName</th>
+            <th>specialization</th>
+            <th>Other</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="teacher : ${teachers}">
+            <td th:text="${teacher.fullName}"></td>
+            <td th:text="${teacher.specialization}"></td>
+            <td>
+                <a th:href="@{/teacher-details/{id}(id=${teacher.id})}">Teacher details</a>
+                <a th:href="@{/editTeacher/{id}(id=${teacher.id})}"> Update</a>
+                <form th:action="@{/deleteTeacher/{id}(id=${teacher.id})}" method="post">
+                    <input type="submit" value="delete">
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</main>
+</body>
+</html>

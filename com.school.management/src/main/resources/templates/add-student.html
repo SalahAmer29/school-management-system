@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" th:href="@{/style.css}">
+<head>
+    <link rel="stylesheet" href="style.css">******
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+</head>
+<body>
+<h1>School Management System-Students</h1>
+<nav class="navbar1">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/ShowStudents}">Students</a></li>
+        <li><a th:href="@{/addStudent}">Add a Student</a></li>
+    </ul>
+</nav>
+<main>
+<form th:action="@{/saveStudent}" th:object="${student}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div>
+        <label class="label">FullName:</label>
+        <input class="textbox" type="text" th:field="*{fullname}" placeholder="Enter Student Name" required />
+    </div>
+    <br>
+    <div>
+        <label class="label">Student Id:</label>
+        <input class="textbox" type="text" th:field="*{studentId}" placeholder="Enter Student Id" required />
+    </div>
+    <br>
+    <div>
+        <label class="label">Choose class:</label>
+        <select th:field="*{classroom}">
+            <option th:each="cls : ${classrooms}" th:value="${cls.id}" th:text="${cls.name}"></option>
+        </select>
+    </div>
+    <button class="button" type="submit">Save Student</button>
+    <br>
+</form>
+</main>
+</body>
+</html>

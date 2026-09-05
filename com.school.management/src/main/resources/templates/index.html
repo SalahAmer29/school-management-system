@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<h1>School Management System</h1>
+<nav class="navbar1">
+    <ul>
+        <li><a th:href="@{/index}">Home</a></li>
+        <li><a th:href="@{/ShowStudents}">Students</a></li>
+        <li><a th:href="@{/showTeacher}">Teachers</a></li>
+        <li><a th:href="@{/showCourses}">Courses</a></li>
+        <li><a th:href="@{/showClassrooms}">Classes</a></li>
+    </ul>
+</nav>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" th:href="@{/style.css}">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Student Details</title>
+</head>
+<body>
+<h1>School Management System-Students</h1>
+<nav class="navbar1">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/ShowStudents}">Students</a></li>
+        <li><a th:href="@{/addStudent}">Add a Student</a></li>
+    </ul>
+</nav>
+<main>
+<div>
+    <p><strong>Name:</strong><span th:text="${student.fullname}"></span></p>
+    <p><strong>Student ID:</strong><span th:text="${student.studentId}"></span></p>
+</div>
+</main>
+</body>
+</html>

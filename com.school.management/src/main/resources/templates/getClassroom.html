@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" th:href="@{/style.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Classroom details</title>
+</head>
+<body>
+<h1>School Management System-Classrooms</h1>
+<nav class="navbar1">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/showClassrooms}">Classrooms</a></li>
+        <li><a th:href="@{/addClassroom}">Add a Classroom</a></li>
+    </ul>
+</nav>
+<main>
+<div>
+    <p>Classroom name: <span th:text="${classroom.name}"></span></p>
+
+    <p><strong>Assigned Courses:</strong></p>
+    <ul>
+        <li th:each="course : ${classroom.courses}" th:text="${course.name}">Course Name</li>
+    </ul>
+    <p th:if="${#lists.isEmpty(classroom.courses)}">No courses assigned</p>
+</div>
+</main>
+</body>
+</html>

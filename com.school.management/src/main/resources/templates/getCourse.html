@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" th:href="@{/style.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Deatails</title>
+</head>
+<body>
+<h1>School Management System-Courses</h1>
+<nav class="navbar1">
+    <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/showCourses}">Courses</a></li>
+        <li><a th:href="@{/addCourse}">Add a Course</a></li>
+    </ul>
+</nav>
+<main>
+<div>
+    <p><strong>Course Name:</strong><span th:text="${course.name}"></span></p>
+    <p><strong>Course Code</strong><span th:text="${course.courseCode}"></span></p>
+
+    <p><strong>Assigned Teacher:</strong>
+
+        <span th:if="${course.teacher != null}" th:text="${course.teacher.fullName}">Teacher Name</span>
+</div>
+</main>
+</body>
+</html>
